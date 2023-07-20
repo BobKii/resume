@@ -31,28 +31,56 @@
 		<br>
 		<hr>
 		<div>
-			<address>{{../header.address}}</address>
+			<address>{{../address}}</address>
 		</div>
 		<br>
 		<hr>
 	</header>
 	{{/with}}
+	<nav>
 
-	{{>nav }}
+		{{> linkfoot text="Skills" href = "/skills" line=true}}
+		{{> linkfoot text="Summary" href = "/summary" line=true }}
+		{{> linkfoot text="education" href = "/education" line=true }}
+
+		{{!-- <a href="/skills">Skills</a>
+		<a href="/summary">Summary</a> --}}
+	</nav>
 
 
 	{{! ↓ ця кострукція показує куди шаблонізатору треба вставляти код з container файлу --}}
 	{{{body}}}
 
-	{{!-- {{#with footer}} --}}
+	{{#with footer}}
 	<footer>
-		{{> footer social = social
-		firstname = ../header.name.firstname
-		lastname = ../header.name.lastname
-		address = ../header.address
-		}}
+		<hr>
+		<br>
+
+		<div>
+			{{#with social}}
+
+			{{!-- // было до 17,07,23
+			{{> linkfoot data=email}}
+			{{> linkfoot data=phone}}
+			{{> linkfoot data=linkedin}}
+			// было до 17,07,23 --}}
+
+
+			{{> linkfoot text=email.text href = email.href blank=true }}
+			{{> linkfoot text=phone.text href = phone.href blank=true }}
+			{{> linkfoot text=linkedin.text href = linkedin.href blank=true }}
+
+			{{/with}}
+		</div>
+		<br>
+		<div>
+			<em>Copyright by {{../header.name.firstname}} {{../header.name.lastname}} </em>
+		</div>
+		<br>
+		<div>Адреса:{{../address}}</div>
+		<br>
 	</footer>
-	{{!-- {{/with}} --}}
+	{{/with}}
 </body>
 
 </html>

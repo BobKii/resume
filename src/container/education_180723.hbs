@@ -1,0 +1,51 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+    {{!-- //+ ДЗ-1
+    “Education page in progress...”
+    //++ ДЗ-1 --}}
+
+    {{#with main}}
+    <main>
+        <section>
+            {{#if big}}
+            <h2>{{> title data = 'My education' }}</h2>
+            {{else}}
+            <h3>{{> title data = 'My education' }}</h3>
+            {{/if}}
+
+
+            <ul>
+                {{#each education}}
+                <li> {{name}}
+                    {{#unless isEnd}} (ще в процесі) {{/unless}}
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+
+        <section>
+            {{> title data = 'My certificates' }}
+            <ul>
+                {{#each certificates}}
+                <li> {{name}} ({{id}}) </li>
+                {{/each}}
+            </ul>
+        </section>
+
+
+
+    </main>
+    {{/with}}
+
+
+
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
