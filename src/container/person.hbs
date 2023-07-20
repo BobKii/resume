@@ -7,85 +7,130 @@
 
 
 
-
-  {{#with main}}
+  {{#with person}}
   <main>
+
+
     <section>
-      {{#if big}}
-      <h2>{{> title data = 'Work history'}}</h2>
-      {{else}}
-      <h3>{{> title data = 'Work history'}}</h3>
-      {{/if}}
+      {{> title data = name}}
+
+    </section>
+
+
+    <section>
       <div>
-        Work in progress
-        <ul>
-          {{#each works}}
-          <li>
-            <div> {{position}} </div>
+        <b> Age: {{age}} Gender: {{gender}} </b>
+        {{#with address}}
+        <address>Address: {{street}} , {{city}} , {{state}} , {{zip}} , {{country}} </address>
+        {{/with }}
 
-            <br>
-            <div>
-              {{duration.from}}
-              -
-              {{#if duration.to}}
-              {{duration.to}}
-              {{else}}
-              (ще працюю)
-              {{/if}}
-            </div>
-            <br>
-            {{#if company.url }}
-            <div> {{>linkfoot text=company.name href=company.url blank=true noLine=true}} </div>
-            {{else}}
-            <div><b> {{company.name}} </b></div>
-            {{/if}}
-            <br>
-            <br>
-
-            <div> <strong> Projects ({{projectAmount}}) </strong></div>
-            <br>
-
-            <ul>
-              {{#each projects}}
-              <li>
-                <div> {{>linkfoot text=name href=url blank=true noLine=true}} </div>
-
-                <div>
-                  <p>
-                  <div> {{about}} </div>
-                  <p>
-
-                    <em> Project stacks ({{stackAmoGnt}}) </em>
-                    <br>
-                  <ul>
-                    {{#each stacks}}
-                    <li>
-                      <div> {{name}} </div>
-                    </li>
-                    {{/each}}
-                  </ul>
-                  <br>
-
-                  <em> Project Awards ({{awardAmoGnt}}) </em>
-                  <br>
-                  <ul>
-                    {{#each awards}}
-                    <li>
-                      <div> {{name}} </div>
-                    </li>
-                    {{/each}}
-                  </ul>
-                  <br>
-
-                </div>
-              </li>
-              {{/each}}
-            </ul>
-          </li>
-          {{/each}}
-        </ul>
+        <hr>
+        <br>
       </div>
     </section>
+
+    <section>
+      <div>
+        <b> Education: </b>
+        {{#with education.[0]}}
+        <div> {{degree}} , {{major}} , {{university}} , {{graduationYear}} </div>
+        {{/with }}
+
+        <hr>
+        <br>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <b> WorkExperience: </b>
+        {{#with workExperience.[0]}}
+        <ul>
+          <div>
+            <li> {{company}} , {{title}} </li>
+            <br>
+            <div> з: {{startDate}} по {{endDate}}</div>
+            <div> {{responsibilities}} </div>
+            <div> Рік заснування: {{year_founded}}, Галузь: {{industry}} </div>
+            <br>
+            {{#with employees.[0]}}
+            <ul> Сотрудники:
+              <div>
+                <li> {{name}} , {{position}} , {{department}} </li>
+
+                {{#with projects.[0]}}
+                <ul> Проекти:
+                  <li>
+                    <h4> {{name}} </h4>
+                    <div> {{description}} </div>
+                    <div> {{status}} </div>
+
+                    {{#with teams.[0]}}
+                    <br>
+                    <ul>
+                      <li> Команда: {{team_name}} </li>
+
+                      {{#with team_leader}}
+                      <div>- {{name}} ({{title}}) </div>
+                      {{!-- <mail> email: {{email}} </mail> --}}
+                      <a href="mailto:{{email}}">{{email}}</a>
+                      {{#with ../team_members.[0]}}
+                      <div>- {{name}} ({{title}}) </div>
+                      <a href="mailto:{{email}}">{{email}}</a>
+                      <br>
+                      <br>
+                      <div>Skills: </div>
+                      {{#each skills }}
+                      <li> - {{this}} </li>
+                      {{/each}}
+                      <br>
+
+                      {{#with projects.[0]}}
+                      {{!-- <ul> --}}
+                        <div> Проекты: {{name}} </div>
+                        <li>{{description}} </li>
+                        <br>
+                        <div>Technology: </div>
+                        {{#each technologies }}
+                        <li> - {{this}} </li>
+                        {{/each}}
+                        <br>
+
+                        <ul> Члены команды:
+                          {{#each team_members}}
+
+                          <li> {{name}} , {{title}} </li>
+                          {{/each}}
+                        </ul>
+
+                        {{/with}}
+                        {{/with}}
+                        {{/with}}
+
+
+                      </ul>
+                      {{/with}}
+
+
+                  </li>
+
+                </ul>
+                {{/with}}
+              </div>
+
+            </ul>
+            {{/with }}
+            <div> </div>
+
+          </div>
+        </ul>
+        {{/with }}
+
+        <hr>
+        <br>
+      </div>
+    </section>
+
   </main>
   {{/with}}
 
