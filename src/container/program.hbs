@@ -34,6 +34,7 @@
         {{!-- {{#each program.[0].}} --}}
         <b> Program: {{program.[0].name}} </b>
         <div> {{program.[0].type}} , Duration: {{program.[0].duration}} </div>
+        <br>
         <div> Detals:</div>
         <br>
         {{#with program.[0].details.museum}}
@@ -74,8 +75,10 @@
         {{!-- {{#each program.[0].}} --}}
         <b> Program: {{program.[1].name}} </b>
         <div> {{program.[1].type}} , Duration: {{program.[1].duration}} </div>
+        <br>
         <div> Detals:</div>
         <br>
+
         {{#with program.[1].details.venue}}
         <ul>
           <li> Name: {{name}}</li>

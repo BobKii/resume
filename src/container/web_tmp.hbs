@@ -5,7 +5,7 @@
 
 <div>
 
-  {{!-- <div> {{web.languages.[0].name}}</div>
+  <div> {{web.languages.[0].name}}</div>
   <div> {{web.languages.[1].name}}</div>
   <div> {{web.languages.[2].name}}</div>
 
@@ -17,7 +17,7 @@
   <div> {{web.languages.[1].properties.[0].values.[0].value}}</div>
 
   <div> {{web.languages.[2].functions.[0].name}}</div>
-  <div> {{web.languages.[2].functions.[0].parameters.[0].name}}</div> --}}
+  <div> {{web.languages.[2].functions.[0].parameters.[0].name}}</div>
 
 
   {{#with web}}
@@ -25,57 +25,48 @@
   <main>
 
 
-
-    {{> title data = 'Web' big=true}}
-
+    {{!-- <section>
+      {{#each languages}}
+      {{> title data = name big=true}}
+      {{/each}}
+    </section> --}}
 
     <section>
       {{#each languages}}
-      <ul>
-        <li>
-          <h2>{{name}}</h2>
-        </li>
-      </ul>
-      <div> {{version}} </div>
-      <div> {{description}} </div>
-      <hr>
-      <br>
+      <div> {{name}} </div>
+      <div> {{name}} , {{version}} , {{description}} , </div>
 
       {{#each elements }}
-      <div> <b>{{name}}</b> - {{description}} </div>
+      <div> {{name}} {{description}} </div>
 
       {{!-- {{#each properties}}
       <div> {{name}} {{description}} </div>
       {{/each}} --}}
 
       {{#each attributes}}
-      <ul>
-        <li> <b>{{name}}</b> - {{description}} </li>
-      </ul>
-
-      {{/each}}
+      <div> {{name}} {{description}} </div>
       {{/each}}
       {{!-- ------- CSS ----------- --}}
 
       {{#each properties}}
-      <div> <b>{{name}}</b> - {{description}} </div>
-
+      <div> {{name}} {{description}} </div>
       {{#each values}}
-      <ul>
-        <li> <b>{{value}}</b> - {{description}} </li>
-      </ul>
-      {{/each}}
+      <div> {{value}} {{description}} </div>
       {{/each}}
 
       {{!-- ------- JavaScript ----------- --}}
       {{#each functions}}
-      <div> <b>{{name}}</b> - {{description}} </div>
-
+      <div> {{name}} {{description}} </div>
       {{#each parameters}}
-      <ul>
-        <li> <b>{{name}}</b> {{type}} - {{description}} </li>
-      </ul>
+      <div> {{name}} {{type}} {{description}} </div>
 
+
+
+
+
+
+      {{/each}}
+      {{/each}}
       {{/each}}
       {{/each}}
       {{/each}}
