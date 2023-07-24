@@ -10,162 +10,239 @@
 
   <main>
 
-    {{> title data = 'JavaScript' big=true}}
+    {{> title data = 'Toyota' big=true}}
 
 
     <section>
-      <div> <strong>{{description}}</strong> </div>
-
-      {{#with history }}
-      <div><em>{{founder}} {{year}}</em> </div>
-      {{/with}}
-
+      <div> <strong>Model: {{model}} {{year}} color {{color}}</strong> </div>
       <hr>
-    </section>
-
-    {{!-- ========== types ============= --}}
-    <section>
-      <ul>
-        <div class="text-primary">
-          <b>Type Data</b>
-        </div>
-        <br>
-
-        {{#each types }}
-        <li> {{this}} </li>
-        {{/each}}
-      </ul>
-
-      <hr>
-    </section>
-
-    {{!-- ========== syntax ============= --}}
-    <section>
-      <ul>
-        <div class="text-primary">
-          <b> Syntax</b>
-        </div>
-        {{#with syntax }}
-        <ul>
-          <b>Variables:</b>
-          {{#each variables }}
-          <li> {{this}} </li>
-          {{/each}}
-        </ul>
-        <br>
-        {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
-
-        <ul>
-          <b>Functions:</b>
-          {{#each functions }}
-          <li> {{this}} </li>
-          {{/each}}
-        </ul>
-        <br>
-
-        <ul>
-          <b>Conditionals:</b>
-          {{#each conditionals }}
-          <li> {{this}} </li>
-          {{/each}}
-        </ul>
-        <br>
-
-        <ul>
-          <b>Loops:</b>
-          {{#each loops }}
-          <li> {{this}} </li>
-          {{/each}}
-        </ul>
-        <br>
-
-        <ul>
-          <b>Classes:</b>
-          {{#each classes }}
-          <li> {{this}} </li>
-          {{/each}}
-        </ul>
-        <br>
-
-        <hr>
-
-        {{/with}}
-      </ul>
     </section>
 
 
     {{!-- ========== features ============= --}}
+    {{#with features}}
     <section>
-
-      {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
-
       <ul>
-        <div class="text-success">
+        <div class="text-primary">
           <b>Features:</b>
         </div>
-        {{#each features }}
-        <li> {{this}} </li>
-        {{/each}}
-      </ul>
+        <br>
 
+        {{#with interior }}
+        <ul>
+          <b>Interior: </b>
+
+          <ul>
+            <b>Seats: </b>
+            {{#with seats}}
+
+            <li> material: {{material}}</li>
+            <li> color: {{color}} </li>
+            <li> heated: {{heated}} </li>
+            <li> ventilated: {{ventilated}} </li>
+            {{/with}}
+          </ul>
+
+          <ul>
+            <b>Dashboard: </b>
+            {{#with dashboard}}
+
+            <li> material: {{material}}</li>
+            <li> color: {{color}} </li>
+            <ul>
+              <b>Display: </b>
+              {{#with display}}
+              <li> type: {{type}}</li>
+              <li> size: {{size}} </li>
+              <li> resolution: {{resolution}}</li>
+              <li> touchscreen: {{touchscreen}} </li>
+              {{/with}}
+
+            </ul>
+            {{/with}}
+          </ul>
+
+
+          <ul>
+            <b>Audio: </b>
+            {{#with audio}}
+
+            <li> system: {{system}}</li>
+            <li> speakers: {{speakers}} </li>
+            <li> subwoofer: {{subwoofer}}</li>
+            <li> bluetooth: {{bluetooth}} </li>
+            <li> USB: {{USB}} </li>
+
+            {{/with}}
+          </ul>
+
+        </ul>
+        {{/with}}
+      </ul>
       <hr>
     </section>
-
-    {{!-- ========== libraries ============= --}}
+    {{!-- ========== exterior =============== --}}
+    {{#with exterior}}
     <section>
-
-      {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
-
       <ul>
-        <div class="text-success">
-          <b> Libraries: </b>
-        </div>
-        {{#each libraries }}
-        <li> {{this}} </li>
-        {{/each}}
-      </ul>
+        <b>Exterior: </b>
+        <br>
+        <br>
+        {{#with wheels}}
+        <ul>
+          <b>Wheels: </b>
+          <li> size: {{size}}</li>
+          <li> type: {{type}}</li>
+          <li> color: {{color}}</li>
+        </ul>
+        {{/with}}
+        <br>
+        {{#with headlights}}
+        <ul>
+          <b>Headlights: </b>
+          <li> type: {{type}}</li>
+          <li> brightness: {{brightness}}</li>
+          <li> automatic: {{automatic}}</li>
 
-      <hr>
+        </ul>
+        {{/with}}
+        <br>
+        {{#with sunroof}}
+        <ul>
+          <b>Sunroof: </b>
+          <li> type: {{type}}</li>
+          <li> size: {{size}}</li>
+          <li> automatic: {{automatic}}</li>
 
+        </ul>
+        {{/with}}
     </section>
+    {{/with}}
+    <hr>
 
-    {{!-- ========== tools ============= --}}
+    {{!-- ========== safety =============== --}}
+    {{#with safety}}
     <section>
-
-      {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
-
       <ul>
-        <div class="text-success">
-          <b> Tools: </b>
-        </div>
-        {{#each tools }}
-        <li> {{this}} </li>
-        {{/each}}
-      </ul>
+        <b>Safety: </b>
+        <br>
+        <br>
+        {{#with airbags}}
+        <ul>
+          <b>Airbags: </b>
+          <li> size: {{size}}</li>
+          <li> type: {{type}}</li>
+          <li> type: {{type}}</li>
+          <li> color: {{color}}</li>
+        </ul>
+        {{/with}}
 
-      <hr>
+        <br>
+        {{#with assistance}}
+        <ul>
+          <b>Assistance: </b>
+          <li> type: {{type}}</li>
+          <li> size: {{size}}</li>
+          <li> type: {{type}}</li>
+          <li> size: {{size}}</li>
+          <li> automatic: {{automatic}}</li>
 
+        </ul>
+        {{/with}}
     </section>
+    {{/with}}
+    <hr>
 
-
-
-    {{!-- ========== community ============= --}}
+    {{!-- ========== engine ============= --}}
+    {{#with ../engine}}
     <section>
-
-      {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
-
       <ul>
-        <div class="text-danger">
-          <b> Community:</b>
+        <div class="text-primary">
+          <b>Engine:</b>
         </div>
-        {{#each community }}
-        <li> Name: {{name}} Type: {{type}} </li>
-        {{/each}}
+        <li> type: {{type}}</li>
+        <li> displacement: {{displacement}}</li>
+        <li> horsepower: {{horsepower}}</li>
+        <li> torque: {{torque}}</li>
+        {{!-- <br> --}}
+        <ul>
+          <div><b>Transmission:</b></div>
+          {{#with transmission}}
+          <li> type: {{type}}</li>
+          <li> gears: {{gears}}</li>
+          {{/with}}
+
+        </ul>
       </ul>
 
-      <hr>
 
     </section>
+    {{/with}}
+
+    <br>
+
+    {{!-- ========== fuel_economy ============= --}}
+    {{#with ../fuel_economy}}
+    <section>
+      <ul>
+        <div class="text-primary">
+          <b>Fuel_economy:</b>
+        </div>
+        <li> city: {{city}}</li>
+        <li> highway: {{highway}}</li>
+        <li> horsepower: {{horsepower}}</li>
+        <li> combined: {{combined}}</li>
+
+      </ul>
+
+    </section>
+    {{/with}}
+
+
+    {{!-- ================= price ============= --}}
+    {{#with ../price}}
+    <section>
+      <ul>
+        <div class="text-primary">
+          <b>Price:</b>
+        </div>
+        <li> base: {{base}}</li>
+        <li> destination: {{destination}}</li>
+        <ul>
+          <div><b>Options:</b></div>
+          {{#with options}}
+          <li> navigation: {{navigation}}</li>
+          <li> moonroof: {{moonroof}}</li>
+          <li> premium_paint: {{premium_paint}}</li>
+          {{/with}}
+
+        </ul>
+
+      </ul>
+
+    </section>
+    {{/with}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{/with}}
 
   </main>
 

@@ -752,6 +752,7 @@ router.get("/car", function (req, res) {
 
   //            ↙ cюди вводимо назву файлу з сontainer
   res.render("car", {
+    layout: "basic",
     make: "Toyota",
     model: "Camry",
     year: 2022,
