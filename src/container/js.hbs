@@ -3,120 +3,174 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
 --}}
 
+
+
 <div>
 
-  {{!-- <div> {{web.languages.[0].name}}</div>
-  <div> {{web.languages.[1].name}}</div>
-  <div> {{web.languages.[2].name}}</div>
-
-
-  <div> {{web.languages.[0].elements.[0].name}}</div>
-  <div> {{web.languages.[0].elements.[0].attributes.[0].name}}</div>
-
-  <div> {{web.languages.[1].properties.[0].name}}</div>
-  <div> {{web.languages.[1].properties.[0].values.[0].value}}</div>
-
-  <div> {{web.languages.[2].functions.[0].name}}</div>
-  <div> {{web.languages.[2].functions.[0].parameters.[0].name}}</div> --}}
-
-
-  {{#with web}}
 
   <main>
 
-
-
-    {{> title data = 'Web' big=true}}
+    {{> title data = 'JavaScript' big=true}}
 
 
     <section>
-      {{#each languages}}
-      <ul>
-        <li>
-          <h2>{{name}}</h2>
-        </li>
-      </ul>
-      <div> {{version}} </div>
-      <div> {{description}} </div>
+      <div> <strong>{{description}}</strong> </div>
+
+      {{#with history }}
+      <div><em>{{founder}} {{year}}</em> </div>
+      {{/with}}
+
       <hr>
-      <br>
+    </section>
 
-      {{#each elements }}
-      <div> <b>{{name}}</b> - {{description}} </div>
-
-      {{!-- {{#each properties}}
-      <div> {{name}} {{description}} </div>
-      {{/each}} --}}
-
-      {{#each attributes}}
+    {{!-- ========== types ============= --}}
+    <section>
       <ul>
-        <li> <b>{{name}}</b> - {{description}} </li>
+        <div class="text-primary">
+          <b>Type Data</b>
+        </div>
+        <br>
+
+        {{#each types }}
+        <li> {{this}} </li>
+        {{/each}}
       </ul>
 
-      {{/each}}
-      {{/each}}
-      {{!-- ------- CSS ----------- --}}
+      <hr>
+    </section>
 
-      {{#each properties}}
-      <div> <b>{{name}}</b> - {{description}} </div>
-
-      {{#each values}}
+    {{!-- ========== syntax ============= --}}
+    <section>
       <ul>
-        <li> <b>{{value}}</b> - {{description}} </li>
+        <div class="text-primary">
+          <b> Syntax</b>
+        </div>
+        {{#with syntax }}
+        <ul>
+          <b>Variables:</b>
+          {{#each variables }}
+          <li> {{this}} </li>
+          {{/each}}
+        </ul>
+        <br>
+        {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
+
+        <ul>
+          <b>Functions:</b>
+          {{#each functions }}
+          <li> {{this}} </li>
+          {{/each}}
+        </ul>
+        <br>
+
+        <ul>
+          <b>Conditionals:</b>
+          {{#each conditionals }}
+          <li> {{this}} </li>
+          {{/each}}
+        </ul>
+        <br>
+
+        <ul>
+          <b>Loops:</b>
+          {{#each loops }}
+          <li> {{this}} </li>
+          {{/each}}
+        </ul>
+        <br>
+
+        <ul>
+          <b>Classes:</b>
+          {{#each classes }}
+          <li> {{this}} </li>
+          {{/each}}
+        </ul>
+        <br>
+
+        <hr>
+
+        {{/with}}
       </ul>
-      {{/each}}
-      {{/each}}
+    </section>
 
-      {{!-- ------- JavaScript ----------- --}}
-      {{#each functions}}
-      <div> <b>{{name}}</b> - {{description}} </div>
 
-      {{#each parameters}}
+    {{!-- ========== features ============= --}}
+    <section>
+
+      {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
+
       <ul>
-        <li> <b>{{name}}</b> {{type}} - {{description}} </li>
+        <div class="text-success">
+          <b>Features:</b>
+        </div>
+        {{#each features }}
+        <li> {{this}} </li>
+        {{/each}}
       </ul>
 
-      {{/each}}
-      {{/each}}
-      {{/each}}
+      <hr>
+    </section>
+
+    {{!-- ========== libraries ============= --}}
+    <section>
+
+      {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
+
+      <ul>
+        <div class="text-success">
+          <b> Libraries: </b>
+        </div>
+        {{#each libraries }}
+        <li> {{this}} </li>
+        {{/each}}
+      </ul>
+
+      <hr>
+
+    </section>
+
+    {{!-- ========== tools ============= --}}
+    <section>
+
+      {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
+
+      <ul>
+        <div class="text-success">
+          <b> Tools: </b>
+        </div>
+        {{#each tools }}
+        <li> {{this}} </li>
+        {{/each}}
+      </ul>
+
+      <hr>
+
     </section>
 
 
 
+    {{!-- ========== community ============= --}}
+    <section>
+
+      {{!-- {{>my_ul TitleSpisok = "Functions:" nameSpisok = syntax.functions}} --}}
+
+      <ul>
+        <div class="text-danger">
+          <b> Community:</b>
+        </div>
+        {{#each community }}
+        <li> Name: {{name}} Type: {{type}} </li>
+        {{/each}}
+      </ul>
+
+      <hr>
+
+    </section>
+
   </main>
-  {{/with}}
+
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {{!--
 Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
 Адже наш layout/default.hbs має вже структуру HTML
