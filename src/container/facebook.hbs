@@ -1,209 +1,87 @@
-{{!--
-Це код container файлу для summary сторінки,
-в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
---}}
+<main>
+
+  {{> title data = 'Facebook' big=true}}
+  <hr>
+
+  {{#each users}}
+
+  {{!-- ========== users ============= --}}
 
 
-
-<div>
-
-
-  <main>
-
-    {{> title data = 'Apple MacBook Pro' big=true}}
-
-
-    <section>
-      <div> <strong>Model: {{description}} {{price}} category {{category}}</strong> </div>
-      <hr>
-    </section>
-
-
-    {{!-- ========== features ============= --}}
-    {{#with features}}
-    <section>
+  {{!-- <section>
+    <div> <strong>Users: </strong> </div>
+  </section> --}}
+  <section>
+    <div class="text-primary">
+      <div>
+        <h2>{{name}}</h2>
+      </div>
+      <div>
+        Gender: {{gender}} , Age: {{age}} , Id: {{id}}
+      </div>
+    </div>
+    <b>Friends:</b>
+    {{#each friends}}
+    <ul>
+      <div>
+        <li> {{name}} , Gender: {{gender}} , Age: {{age}} , Id: {{id}}</li>
+      </div>
+      <b>Mutual Friends:</b>
+      {{#each mutual_friends}}
       <ul>
-        <div class="text-primary">
-          <b>Features:</b>
+        <div>
+          <li> {{name}} , Gender: {{gender}} , Age: {{age}}</li>
         </div>
-        <br>
-        {{!-- ========== Processor ============= --}}
-        {{#with processor }}
-        <section>
-          <ul>
-            <b>Processor: </b>
-
-            <li> brand: {{brand}}</li>
-            <li> model: {{model}} </li>
-            <li> speed: {{speed}} </li>
-            <li> cores: {{cores}} </li>
-            <li> cache: {{cache}} </li>
-          </ul>
-        </section>
-        {{/with}}
-
-        {{!-- ========== memory ============= --}}
-        {{#with memory }}
-        <section>
-          <ul>
-            <b>Memory: </b>
-
-            <li> type: {{type}}</li>
-            <li> size: {{size}} </li>
-            <li> speed: {{speed}} </li>
-          </ul>
-        </section>
-        {{/with}}
-
-        {{!-- ========== storage ============= --}}
-        {{#with storage }}
-        <section>
-          <ul>
-            <b>Storage: </b>
-
-            <li> type: {{type}}</li>
-            <li> size: {{size}} </li>
-          </ul>
-        </section>
-        {{/with}}
-
-        {{!-- ========== display ============= --}}
-        {{#with display }}
-        <section>
-          <ul>
-            <b>Display: </b>
-
-            <li> size: {{size}}</li>
-            <li> resolution: {{resolution}} </li>
-            <li> technology: {{technology}} </li>
-            <li> color_space: {{color_space}} </li>
-            <li> brightness: {{brightness}} </li>
-            <li> refresh_rate: {{refresh_rate}} </li>
-
-          </ul>
-        </section>
-        {{/with}}
-
-        {{!-- ========== graphics ============= --}}
-        {{#with graphics }}
-        <section>
-          <ul>
-            <b>Graphics: </b>
-
-            <li> brand: {{brand}}</li>
-            <li> model: {{model}} </li>
-            <li> memory: {{memory}} </li>
-
-          </ul>
-        </section>
-        {{/with}}
-
-
-
-        {{!-- ========== battery ============= --}}
-        {{#with battery }}
-        <section>
-          <ul>
-            <b>Battery: </b>
-
-            <li> type: {{type}}</li>
-            <li> capacity: {{capacity}} </li>
-            <li> life: {{life}} </li>
-
-          </ul>
-        </section>
-        {{/with}}
-
-        {{!-- ========== weight ============= --}}
-        <section>
-          <ul>
-            <b>Weight: </b>
-
-            <li>{{weight}}</li>
-          </ul>
-        </section>
-
-        {{!-- ========== dimensions ============= --}}
-        {{#with dimensions }}
-        <section>
-          <ul>
-            <b>Dimensions: </b>
-
-            <li> height: {{height}}</li>
-            <li> width: {{width}} </li>
-            <li> depth: {{depth}} </li>
-
-          </ul>
-        </section>
-        {{/with}}
-
-        {{!-- ========== operating_system ============= --}}
-        <section>
-          <ul>
-            <b>Operating system: </b>
-
-            <li>{{operating_system}}</li>
-          </ul>
-        </section>
-
-        {{!-- ========== accessories ============= --}}
-
-        <section>
-          <ul>
-            <b> Accessories: </b>
-          </ul>
-          {{#each accessories }}
-          <ul>
-
-            <li> name: {{name}} price: {{price}}</li>
-
-          </ul>
-          {{/each}}
-        </section>
-
-        {{!-- ========== ports ============= --}}
-
-        <section>
-          <ul>
-            <b>Ports: </b>
-          </ul>
-          <ul>
-
-            {{#each ports }}
-
-            <li> type: {{type}}</li>
-            <li> count: {{count}} </li>
-            {{#if features.type}}
-            <li> features: </li>
-            {{/if}}
-            <ul>
-              {{#each features }}
-              <li>{{this}}</li>
-              {{/each}}
-            </ul>
-
-            {{/each}}
-
-          </ul>
-
-        </section>
-
-
       </ul>
-      {{/with}}
+      {{/each}}
+
+
+
+      <b>groups:</b>
+
+      {{#each ../groups}}
+      <ul>
+        <div>
+          <li> {{name}} , Description: {{description}} , Id: {{id}}</li>
+        </div>
+        <b>Members:</b>
+        {{#each members}}
+        <ul>
+          <div>
+            <li> {{name}} , Gender: {{gender}} , Age: {{age}} , Id: {{id}}</li>
+          </div>
+        </ul>
+        {{/each}}
       </ul>
-      <hr>
-    </section>
+
+      {{/each}}
 
 
 
-    {{!-- {{/with}} --}}
+      {{#each groups}}
+      <ul>
+        <div>
+          <li> {{name}} , Description: {{description}} , Id: {{id}}</li>
+        </div>
+        <b>Members:</b>
+        {{#each members}}
+        <ul>
+          <div>
+            <li> {{name}} , Gender: {{gender}} , Age: {{age}} , Id: {{id}}</li>
+          </div>
+        </ul>
+        {{/each}}
+      </ul>
 
-  </main>
+      {{/each}}
 
+    </ul>
 
-</div>
-{{!--
-Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
-Адже наш layout/default.hbs має вже структуру HTML
---}}
+    {{/each}}
+
+    <br>
+  </section>
+  <hr>
+  {{/each }}
+
+</main>
