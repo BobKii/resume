@@ -10,11 +10,11 @@
 
   <main>
 
-    {{> title data = 'Toyota' big=true}}
+    {{> title data = 'Apple MacBook Pro' big=true}}
 
 
     <section>
-      <div> <strong>Model: {{model}} {{year}} color {{color}}</strong> </div>
+      <div> <strong>Model: {{description}} {{price}} category {{category}}</strong> </div>
       <hr>
     </section>
 
@@ -27,222 +27,177 @@
           <b>Features:</b>
         </div>
         <br>
-
-        {{#with interior }}
-        <ul>
-          <b>Interior: </b>
-
+        {{!-- ========== Processor ============= --}}
+        {{#with processor }}
+        <section>
           <ul>
-            <b>Seats: </b>
-            {{#with seats}}
+            <b>Processor: </b>
 
-            <li> material: {{material}}</li>
-            <li> color: {{color}} </li>
-            <li> heated: {{heated}} </li>
-            <li> ventilated: {{ventilated}} </li>
-            {{/with}}
+            <li> brand: {{brand}}</li>
+            <li> model: {{model}} </li>
+            <li> speed: {{speed}} </li>
+            <li> cores: {{cores}} </li>
+            <li> cache: {{cache}} </li>
           </ul>
-
-          <ul>
-            <b>Dashboard: </b>
-            {{#with dashboard}}
-
-            <li> material: {{material}}</li>
-            <li> color: {{color}} </li>
-            <ul>
-              <b>Display: </b>
-              {{#with display}}
-              <li> type: {{type}}</li>
-              <li> size: {{size}} </li>
-              <li> resolution: {{resolution}}</li>
-              <li> touchscreen: {{touchscreen}} </li>
-              {{/with}}
-
-            </ul>
-            {{/with}}
-          </ul>
-
-
-          <ul>
-            <b>Audio: </b>
-            {{#with audio}}
-
-            <li> system: {{system}}</li>
-            <li> speakers: {{speakers}} </li>
-            <li> subwoofer: {{subwoofer}}</li>
-            <li> bluetooth: {{bluetooth}} </li>
-            <li> USB: {{USB}} </li>
-
-            {{/with}}
-          </ul>
-
-        </ul>
+        </section>
         {{/with}}
+
+        {{!-- ========== memory ============= --}}
+        {{#with memory }}
+        <section>
+          <ul>
+            <b>Memory: </b>
+
+            <li> type: {{type}}</li>
+            <li> size: {{size}} </li>
+            <li> speed: {{speed}} </li>
+          </ul>
+        </section>
+        {{/with}}
+
+        {{!-- ========== storage ============= --}}
+        {{#with storage }}
+        <section>
+          <ul>
+            <b>Storage: </b>
+
+            <li> type: {{type}}</li>
+            <li> size: {{size}} </li>
+          </ul>
+        </section>
+        {{/with}}
+
+        {{!-- ========== display ============= --}}
+        {{#with display }}
+        <section>
+          <ul>
+            <b>Display: </b>
+
+            <li> size: {{size}}</li>
+            <li> resolution: {{resolution}} </li>
+            <li> technology: {{technology}} </li>
+            <li> color_space: {{color_space}} </li>
+            <li> brightness: {{brightness}} </li>
+            <li> refresh_rate: {{refresh_rate}} </li>
+
+          </ul>
+        </section>
+        {{/with}}
+
+        {{!-- ========== graphics ============= --}}
+        {{#with graphics }}
+        <section>
+          <ul>
+            <b>Graphics: </b>
+
+            <li> brand: {{brand}}</li>
+            <li> model: {{model}} </li>
+            <li> memory: {{memory}} </li>
+
+          </ul>
+        </section>
+        {{/with}}
+
+
+
+        {{!-- ========== battery ============= --}}
+        {{#with battery }}
+        <section>
+          <ul>
+            <b>Battery: </b>
+
+            <li> type: {{type}}</li>
+            <li> capacity: {{capacity}} </li>
+            <li> life: {{life}} </li>
+
+          </ul>
+        </section>
+        {{/with}}
+
+        {{!-- ========== weight ============= --}}
+        <section>
+          <ul>
+            <b>Weight: </b>
+
+            <li>{{weight}}</li>
+          </ul>
+        </section>
+
+        {{!-- ========== dimensions ============= --}}
+        {{#with dimensions }}
+        <section>
+          <ul>
+            <b>Dimensions: </b>
+
+            <li> height: {{height}}</li>
+            <li> width: {{width}} </li>
+            <li> depth: {{depth}} </li>
+
+          </ul>
+        </section>
+        {{/with}}
+
+        {{!-- ========== operating_system ============= --}}
+        <section>
+          <ul>
+            <b>Operating system: </b>
+
+            <li>{{operating_system}}</li>
+          </ul>
+        </section>
+
+        {{!-- ========== accessories ============= --}}
+
+        <section>
+          <ul>
+            <b> Accessories: </b>
+          </ul>
+          {{#each accessories }}
+          <ul>
+
+            <li> name: {{name}} price: {{price}}</li>
+
+          </ul>
+          {{/each}}
+        </section>
+
+        {{!-- ========== ports ============= --}}
+
+        <section>
+          <ul>
+            <b>Ports: </b>
+          </ul>
+          <ul>
+
+            {{#each ports }}
+
+            <li> type: {{type}}</li>
+            <li> count: {{count}} </li>
+            {{#if features.type}}
+            <li> features: </li>
+            {{/if}}
+            <ul>
+              {{#each features }}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+
+            {{/each}}
+
+          </ul>
+
+        </section>
+
+
+      </ul>
+      {{/with}}
       </ul>
       <hr>
     </section>
-    {{!-- ========== exterior =============== --}}
-    {{#with exterior}}
-    <section>
-      <ul>
-        <b>Exterior: </b>
-        <br>
-        <br>
-        {{#with wheels}}
-        <ul>
-          <b>Wheels: </b>
-          <li> size: {{size}}</li>
-          <li> type: {{type}}</li>
-          <li> color: {{color}}</li>
-        </ul>
-        {{/with}}
-        <br>
-        {{#with headlights}}
-        <ul>
-          <b>Headlights: </b>
-          <li> type: {{type}}</li>
-          <li> brightness: {{brightness}}</li>
-          <li> automatic: {{automatic}}</li>
-
-        </ul>
-        {{/with}}
-        <br>
-        {{#with sunroof}}
-        <ul>
-          <b>Sunroof: </b>
-          <li> type: {{type}}</li>
-          <li> size: {{size}}</li>
-          <li> automatic: {{automatic}}</li>
-
-        </ul>
-        {{/with}}
-    </section>
-    {{/with}}
-    <hr>
-
-    {{!-- ========== safety =============== --}}
-    {{#with safety}}
-    <section>
-      <ul>
-        <b>Safety: </b>
-        <br>
-        <br>
-        {{#with airbags}}
-        <ul>
-          <b>Airbags: </b>
-          <li> size: {{size}}</li>
-          <li> type: {{type}}</li>
-          <li> type: {{type}}</li>
-          <li> color: {{color}}</li>
-        </ul>
-        {{/with}}
-
-        <br>
-        {{#with assistance}}
-        <ul>
-          <b>Assistance: </b>
-          <li> type: {{type}}</li>
-          <li> size: {{size}}</li>
-          <li> type: {{type}}</li>
-          <li> size: {{size}}</li>
-          <li> automatic: {{automatic}}</li>
-
-        </ul>
-        {{/with}}
-    </section>
-    {{/with}}
-    <hr>
-
-    {{!-- ========== engine ============= --}}
-    {{#with ../engine}}
-    <section>
-      <ul>
-        <div class="text-primary">
-          <b>Engine:</b>
-        </div>
-        <li> type: {{type}}</li>
-        <li> displacement: {{displacement}}</li>
-        <li> horsepower: {{horsepower}}</li>
-        <li> torque: {{torque}}</li>
-        {{!-- <br> --}}
-        <ul>
-          <div><b>Transmission:</b></div>
-          {{#with transmission}}
-          <li> type: {{type}}</li>
-          <li> gears: {{gears}}</li>
-          {{/with}}
-
-        </ul>
-      </ul>
-
-
-    </section>
-    {{/with}}
-
-    <br>
-
-    {{!-- ========== fuel_economy ============= --}}
-    {{#with ../fuel_economy}}
-    <section>
-      <ul>
-        <div class="text-primary">
-          <b>Fuel_economy:</b>
-        </div>
-        <li> city: {{city}}</li>
-        <li> highway: {{highway}}</li>
-        <li> horsepower: {{horsepower}}</li>
-        <li> combined: {{combined}}</li>
-
-      </ul>
-
-    </section>
-    {{/with}}
-
-
-    {{!-- ================= price ============= --}}
-    {{#with ../price}}
-    <section>
-      <ul>
-        <div class="text-primary">
-          <b>Price:</b>
-        </div>
-        <li> base: {{base}}</li>
-        <li> destination: {{destination}}</li>
-        <ul>
-          <div><b>Options:</b></div>
-          {{#with options}}
-          <li> navigation: {{navigation}}</li>
-          <li> moonroof: {{moonroof}}</li>
-          <li> premium_paint: {{premium_paint}}</li>
-          {{/with}}
-
-        </ul>
-
-      </ul>
-
-    </section>
-    {{/with}}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{/with}}
+    {{!-- {{/with}} --}}
 
   </main>
 
