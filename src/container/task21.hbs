@@ -1,0 +1,122 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+
+
+
+  {{#with program}}
+  <main>
+
+
+    <section>
+      {{> title data = excursion.name big=true}}
+
+    </section>
+
+    {{#with excursion}}
+    <section>
+      <div>
+        {{!-- <b> Age: {{age}} Gender: {{gender}} </b> --}}
+        {{#with location}}
+        <address>Address: {{city}} , {{country}} </address>
+        {{/with }}
+        <div> Date excursion: {{date}} </div>
+        <hr>
+        <br>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        {{!-- {{#each program.[0].}} --}}
+        <b> Program: {{program.[0].name}} </b>
+        <div> {{program.[0].type}} , Duration: {{program.[0].duration}} </div>
+        <br>
+        <div> Detals:</div>
+        <br>
+        {{#with program.[0].details.museum}}
+        <ul>
+          <li> Name: {{name}}</li>
+          {{!-- {{#with location.[0] }} --}}
+          <div> Address: {{location.address}}, {{location.city}}, {{location.country}}, </div>
+          {{!-- {{/with}} --}}
+
+          {{#with exhibits.[0]}}
+          <li> Concert: {{name}}</li>
+          <div> - Artist: {{artist}} </div>
+          <div> - Description: {{description}} </div>
+          <div> - Audio_guide: {{audio_guide}} </div>
+          {{/with}}
+
+          {{#with exhibits.[1]}}
+          <li> Concert: {{name}}</li>
+          <div> - Artist: {{artist}} </div>
+          <div> - Description: {{description}} </div>
+          <div> - Audio_guide: {{audio_guide}} </div>
+          {{/with}}
+
+          <li> Guide: {{../program.[0].details.guide.name}} </li>
+          <div> - {{../program.[0].details.guide.language}}</div>
+          <div> - {{../program.[0].details.guide.rating}}</div>
+        </ul>
+        {{/with}}
+        {{!-- {{/each }} --}}
+        <hr>
+        <br>
+      </div>
+    </section>
+
+
+    <section>
+      <div>
+        {{!-- {{#each program.[0].}} --}}
+        <b> Program: {{program.[1].name}} </b>
+        <div> {{program.[1].type}} , Duration: {{program.[1].duration}} </div>
+        <br>
+        <div> Detals:</div>
+        <br>
+
+        {{#with program.[1].details.venue}}
+        <ul>
+          <li> Name: {{name}}</li>
+          {{!-- {{#with location.[0] }} --}}
+          <div> Address: {{location.address}}, {{location.city}}, {{location.country}}, </div>
+          {{!-- {{/with}} --}}
+
+
+          {{#each ../program.[1].details.performers}}
+          <li> Concert: {{name}} </li>
+          <ul>
+            <li> Style: {{type}} </li>
+          </ul>
+          {{!-- <div> - Artist: {{artist}} </div>
+          <div> - Description: {{type}} </div> --}}
+
+          {{/each}}
+
+
+          <li> Guide: {{../program.[1].details.guide.name}} </li>
+          <div> - {{../program.[1].details.guide.language}}</div>
+          <div> - {{../program.[1].details.guide.rating}}</div>
+        </ul>
+        {{/with}}
+        {{!-- {{/each }} --}}
+        <hr>
+        <br>
+      </div>
+    </section>
+
+    {{/with}}
+
+  </main>
+  {{/with}}
+
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
