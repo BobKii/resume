@@ -9,13 +9,18 @@
 
   {{!-- {{#with heading}} --}}
   <main>
+    <section>
+      {{#with page_header}}
+      <div class="display-1"> {{title}} </div>
+      <div class="display-1"> {{description}} </div>
+
+      {{/with}}
+
+    </section>
 
 
-    {{!-- <section>
 
-      {{> title data = heading.main.name big=true}}
 
-    </section> --}}
     {{!-- // ======================= heading ============== --}}
     {{#with heading}}
     <section>
