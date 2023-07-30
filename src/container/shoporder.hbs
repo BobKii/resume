@@ -1,0 +1,347 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+
+
+  <main>
+
+    {{!-- // ====== navigation ============== --}}
+    <section>
+      {{#with navigation}}
+      <div class="nav nav-tabs">
+        {{#each links}}
+        <div class="nav-item">
+
+          <a href="{{href}}" class="nav-link {{#if @last}} disabled {{/if}}">{{text}}
+          </a>
+
+        </div>
+        {{/each}}
+      </div>
+      {{/with}}
+    </section>
+    <br>
+    {{!-- // ====== contacts_data ============== --}}
+    <div class="col=12 row">
+      <section class="col-8 p-2">
+        <div class="row ">
+          <div class="card text-bg-secondary">
+
+            <h1>{{header}}</h1>
+            <br>
+            <br>
+
+            {{#with contacts_data}}
+
+            <h4>{{title}}</h4>
+            <div class="row">
+              {{#each buttons}}
+              <div class="row col-5 m-3">
+                <button {{#if isPrimary}} class="btn btn-warning m-2" {{/if}} {{#if isOutline}}
+                  class="btn btn-outline-warning m-2" {{/if}}>
+                  {{text}}</button>
+              </div>
+
+              {{/each}}
+            </div>
+            {{#with form}}
+            {{#with input}}
+            <div class="row">
+              <div class="card col-5 m-4 ">
+                {{#with surname}}
+                <label class="form-label">{{label}}</label>
+                <input placeholder="{{placeholder}}" class="form-cotrol">
+                <div class="form-text">{{caption}}</div>
+                {{/with}}
+
+                {{#with phone}}
+                <label class="form-label">{{label}}</label>
+                <input placeholder="{{placeholder}}" class="form-cotrol">
+                <div class="form-text">{{caption}}</div>
+                {{/with}}
+              </div>
+
+              <div class="card col-5 row m-4">
+
+                {{#with name}}
+                <label class="form-label">{{label}}</label>
+                <input placeholder="{{placeholder}}" class="form-cotrol">
+                <div class="form-text">{{caption}}</div>
+                {{/with}}
+                {{#with email}}
+                <label class="form-label">{{label}}</label>
+                <input placeholder="{{placeholder}}" class="form-cotrol">
+                <div class="form-text">{{caption}}</div>
+                {{/with}}
+
+              </div>
+            </div>
+            {{/with}}
+
+            <div class="card text-bg-secondary">
+              {{#each switch}}
+              <div class="form-check form-switch">
+                <label class="form-check-label">{{text}}</label>
+                <input type="checkbox" class="form-check-input">
+              </div>
+
+              {{/each}}
+
+            </div>
+            {{!-- =========== delivery =============== --}}
+            <div class="card text-bg-secondary">
+              {{#with ../../delivery}}
+              <div class="display-6 m-2">
+                {{title}}
+              </div>
+              <div class="card text-bg-secondary">
+                {{#each select}}
+                <div>
+                  <label class="form-label m-2">{{label}}</label>
+                  {{!-- <input placeholder="{{placeholder}}"> --}}
+                  <select class="form-select-sm">
+                    {{#each options}}
+
+                    <option value={{value}}>{{text}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+                {{/each}}
+              </div>
+              {{!-- =========== delivery_type =============== --}}
+
+              {{#each delivery_type}}
+              <div class="form-chek">
+                <label class="form-check-label"> {{type}} </label>
+                <input name="dostavka" type="radio" class="form-check-input">
+              </div>
+              {{/each}}
+              <hr>
+              {{#with payment}}
+              <div class="display-6 m-2">
+                {{title}}
+              </div>
+              {{#each list}}
+              <div class="form-chek">
+                <label class="form-check-label "> {{type}} </label>
+                <input name="oplata" type="radio" class="form-check-input">
+                <div class="form-text">{{description}}</div>
+                <br>
+              </div>
+              {{/each}}
+
+              {{/with}}
+              <hr>
+              {{#with contact}}
+              <div class="display-6 m-2">
+                {{title}}
+              </div>
+              <div class="row">
+                <div class="card col-5 m-4 ">
+                  <div class="card text-bg-secondary">
+                    {{#with surname}}
+                    <label class="form-label">{{label}}</label>
+                    <input placeholder="{{placeholder}}" class="form-cotrol">
+                    <div class="form-text">{{caption}}</div>
+                    {{/with}}
+
+                    {{#with name}}
+                    <label class="form-label">{{label}}</label>
+                    <input placeholder="{{placeholder}}" class="form-cotrol">
+                    <div class="form-text">{{caption}}</div>
+                    {{/with}}
+                  </div>
+                </div>
+                <div class="card col-5 m-4 ">
+                  <div class="card text-bg-secondary">
+                    {{#with phone}}
+                    <label class="form-label">{{label}}</label>
+                    <input placeholder="{{placeholder}}" class="form-cotrol">
+                    <div class="form-text">{{caption}}</div>
+                    {{/with}}
+
+                    {{#with email}}
+                    <label class="form-label">{{label}}</label>
+                    <input placeholder="{{placeholder}}" class="form-cotrol">
+                    <div class="form-text">{{caption}}</div>
+                    {{/with}}
+
+
+                  </div>
+                </div>
+              </div>
+
+              {{/with}}
+              <hr>
+              {{#with coment}}
+              <label class="form-label m-2">{{label}}</label>
+              <input placeholder="{{placeholder}}" class="form-cotrol m-2">
+
+              {{/with}}
+              <hr>
+
+
+
+
+              {{/with}}
+
+              {{#with ../../coupon}}
+              <div class="display-6 m-2">
+                {{title}}
+              </div>
+              <div>
+                {{#with select}}
+                {{#with availabel_coupon}}
+                <div>
+                  <label class="form-label mt-2">{{label}}</label>
+                  {{!-- <input class="form-control" placeholder="{{placeholder}}"> --}}
+                  <select placeholder="{{placeholder}}" class="form-select-sm">
+                    {{#each options}}
+
+                    <option value={{value}}>{{text}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+                {{/with}}
+
+                {{#with friend_coupon}}
+                <div>
+                  <label class="form-label">{{label}}</label>
+                  {{!-- <input class="form-control" placeholder="{{placeholder}}"> --}}
+                  <select placeholder="{{placeholder}}" class="m-2 form-select-sm">
+                    <div class="form-text">{{caption}}</div>
+                    {{#each options}}
+
+                    <option value={{value}}>{{text}}</option>
+                    {{/each}}
+                  </select>
+                  <div class="form-text">{{placeholder}}</div>
+                </div>
+                {{/with}}
+
+                {{/with}}
+              </div>
+
+              {{#with add}}
+              {{#with friend}}
+              <label class="form-label m-2">{{label}}</label>
+              <input placeholder="{{placeholder}}" class="form-cotrol m-2">
+              <div class="form-text">{{caption}}</div>
+
+              {{/with}}
+
+              {{#with colleague}}
+              <label class="form-label m-2">{{label}}</label>
+              <input placeholder="{{placeholder}}" class="form-cotrol m-2">
+              <div class="form-text">{{caption}}</div>
+
+              {{/with}}
+
+
+
+              {{/with}}
+
+
+              {{/with}} {{!-- === close coupone=== --}}
+
+              {{#with ../../quiz}}
+              {{#with factors }}
+              <div class="text-primary m-2"> {{title}} </div>
+              {{#each options}}
+              <div class="form-chek">
+                <label class="form-check-label"> {{this}} </label>
+                <input name="dostavka" type="checkbox" class="form-check-input">
+              </div>
+              {{/each}}
+
+
+              {{/with}}
+
+
+
+              {{/with}} {{!-- === quiz === --}}
+              <hr>
+
+              {{/with}}
+
+              {{/with}}
+            </div>
+
+          </div>
+
+      </section>
+
+
+      {{!-- // ====== action_block ============== --}}
+      <section class="col-4">
+        <div class="row ">
+          <div class="card text-bg-secondary">
+
+            {{#each action_block}}
+
+            <button {{#if isSuccess}} class="btn btn-success m-2 btn-sm" {{/if}} {{#if
+              isDanger}}class="btn btn-danger m-2" {{/if}} {{#if isInfo}}class="btn btn-info m-2" {{/if}}>
+              {{text}}
+            </button>
+
+            {{/each}}
+          </div>
+
+          <div class="card text-bg-secondary">
+            {{#with total}}
+
+            <div class="display-6 m-2">{{title}}</div>
+            {{#each item_list}}
+            <div class="m-1">{{name}}: {{price}} </div>
+            {{/each}}
+            <hr>
+            {{#each additional_info}}
+            <div class="m-1">{{text}}: {{value}} </div>
+            {{/each}}
+            <hr>
+            {{#with total_price}}
+            <div class="m-1">{{text}}: {{value}} </div>
+            {{/with}}
+            <br>
+            <hr>
+
+            {{#each button}}
+
+            <button {{#if isPrimary}} class="btn btn-primary m-2" {{/if}} {{#if
+              isOutline}}class="btn btn-outline-primary m-2" {{/if}}>
+              {{text}}
+            </button>
+
+            {{/each}}
+
+            <br>
+
+            {{/with}}
+
+          </div>
+          <hr>
+
+
+
+        </div>
+      </section>
+
+
+    </div>
+
+
+    {{!-- -------------------------------------------- --}}
+
+
+
+  </main>
+
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
