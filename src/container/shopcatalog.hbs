@@ -1,0 +1,212 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+
+
+  <main>
+
+    {{!-- // ====== navigation ============== --}}
+    <section>
+      {{#with navigation}}
+      <div class="nav nav-tabs">
+        {{#each links}}
+        <div class="nav-item">
+
+          <a href="{{href}}" class="nav-link {{#if @last}} disabled {{/if}}">{{text}}
+          </a>
+
+        </div>
+        {{/each}}
+      </div>
+      {{/with}}
+    </section>
+    <br>
+
+    <section class="col-8">
+      <ol class="breadcrumb">
+        {{#each breadcrumb}}
+
+        <li class="breadcrumb-item">
+          <a href=" {{url}} "> {{name}} </a>
+        </li>
+
+
+        {{/each}}
+      </ol>
+    </section>
+
+    <h2>{{header}}</h2>
+
+    {{#each sortBlock}}
+    {{!-- <input placeholder="{{placeholder}}"> --}}
+    <select class="form-select-sm m-2">
+      <option> {{placeholder}}</option>
+      {{#each options}}
+      <option {{value}}>{{text}}</option>
+      {{/each}}
+    </select>
+    {{/each}}
+    <br>
+
+    <section class="col=12 row">
+      <section class="col-4 p-2">
+        <div class="row ">
+          <div class="card text-bg-secondary">
+            {{#with filterBlock}}
+            {{#with sellers}}
+            <b class="m-2"> {{title}} </b>
+
+            {{#each list}}
+            <div class="form-chek">
+              <input name="prodavets" type="checkbox" class="form-check-input">
+              <label class="form-check-label"> {{value}} </label>
+            </div>
+            {{/each}}
+            {{!-- <br> --}}
+            <hr>
+            {{/with}}
+
+            {{#with brands}}
+            <b class="m-2"> {{title}} </b>
+            {{#with input}}
+            <input placeholder="{{placeholder}}" class="form-cotrol m-2">
+            {{/with}}
+
+            {{#each options}}
+            <div class="form-chek">
+              <input name="prodavets" type="checkbox" class="form-check-input">
+              <label class="form-check-label"> {{value}} </label>
+            </div>
+            {{/each}}
+
+            {{/with}} {{!-- // == #with brands === --}}
+            <hr>
+
+            {{#with price}}
+            <b class="m-2"> {{title}} </b>
+
+            {{!-- <br> --}}
+            {{#with range}}
+            <input placeholder="від : {{from}}" class="form-cotrol m-2">
+            <input placeholder="до : {{to}}" class="form-cotrol m-2">
+            {{/with}}
+
+            {{#with button}}
+            <a href="{{link}}" class="btn btn-outline-dark col-3 m-2"> {{text}} </a>
+            {{/with}}
+            {{/with}} {{!-- // == #with price === --}}
+            <hr>
+
+            {{#each filterList}}
+            <b class="m-2"> {{title}} </b>
+
+            {{#each options}}
+            <div class="form-chek">
+              <input name="prodavets" type="checkbox" class="form-check-input">
+              <label class="form-check-label"> {{value}} </label>
+            </div>
+            {{/each}}
+
+            {{/each}} {{!-- // == #each filterList === --}}
+
+
+            {{/with}} {{!-- // == #with filterBlock === --}}
+
+            <br>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="col-8">
+
+        <div class="row gx-2">
+          {{#each goodsList}}
+
+          <div class="card col-4 m-4 text-bg-secondary">
+            <div class="row gy-2">
+              <img src='{{img}}' class="m-1">
+              <div class="card-body">
+
+                {{#if isHot}}
+                <span class="badge text-bg-warning rounded-pill  m-2 text-upperccase">! HOT</span>
+                {{/if}}
+
+                {{#if isNew}}
+                <span class="badge text-bg-primary rounded-pill m-2">Нове</span>
+                {{/if}}
+
+                {{#if isFast}}
+                <p class="badge text-bg-success rounded-pill m-2 text-upperccase">Швидка доставка</p>
+                {{/if}}
+
+                {{#if isFree}}
+                <p class="badge text-bg-secondary rounded-pill m-2 text-upperccase">Швидка доставка</p>
+                {{/if}}
+
+                <h4 class="m-2">{{name}}</h4>
+
+                {{#with review}}
+
+                <div>{{amount}} {{text}} </div>
+                {{/with}}
+
+                <h4 class="m-2"> {{price}} </h4>
+                <div>{{delivery}} </div>
+
+                {{#each buttons}}
+
+                <a href="{{link}}" {{#if isPrimary}} class="btn btn-primary m-2" {{/if}} {{#if isSecondary}}
+                  class="btn btn-success m-2" {{/if}}>
+                  {{text}}
+                </a>
+
+                {{/each}}
+
+                <ul>
+                  {{#each characteristics}}
+                  <li> {{title}} {{value}} </li>
+                  {{/each}}
+                </ul>
+
+              </div>
+            </div>
+          </div>
+
+          {{/each}} {{!-- // == #each goodsList === --}}
+        </div>
+
+      </section>
+
+    </section>
+
+    <section>
+
+      <section>
+        {{#with service}}
+        <div class="card text-bg-success text-center">
+          <div class="card-body">
+            <h2 class="card-header text-center">
+              <div>{{title}}</div>
+            </h2>
+            <div class="text-center">{{description}}</div>
+
+            {{#each buttons}}
+            <a href="{{link}}" class="text-center btn btn-primary m-3">{{text}}</a>
+
+            {{/each}}
+          </div>
+        </div>
+
+        {{/with}}
+      </section>
+
+    </section>
+
+
+  </main>
+
+</div>
