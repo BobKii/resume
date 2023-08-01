@@ -1,0 +1,329 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+
+
+  <main>
+
+    {{!-- // ====== navigation ============== --}}
+    <section>
+      {{#with navigation}}
+      <div class="nav nav-tabs">
+        {{#each links}}
+        <div class="nav-item">
+
+          <a href="{{href}}" class="nav-link {{#if @last}} disabled {{/if}}">{{text}}
+          </a>
+
+        </div>
+        {{/each}}
+      </div>
+      {{/with}}
+    </section>
+    <br>
+    {{!-- // ====== header ============== --}}
+
+    <div class=" display-4 m2">{{header}}</div>
+
+    <br>
+
+    {{!-- // ====== goodsBlock === tabs ========= --}}
+    <section>
+      {{#with purchase}}
+      <div class="nav nav-tabs">
+        {{!-- <div class="row"> --}}
+          {{#each tabs}}
+          <div class="nav-item">
+            <a href="#" class="nav-link" {{#if isActive}}active{{/if}} {{#if isDisabled}}disable{{/if}}>
+              {{this}}
+            </a>
+          </div>
+
+          {{/each}}
+        </div>
+
+        {{!-- {{/with}} --}}
+    </section>
+
+    {{#with actionBlock}}
+    {{#with input}}
+    <br>
+    <input placeholder="{{placeholder}}" class="form-cotrol m-2">
+    {{/with}}
+
+    {{#each buttons}}
+    {{!-- <div class="col-6"> --}}
+      <button {{#if isSuccess}} class="btn btn-success m-2" {{/if}} {{#if isOutline}}
+        class="btn btn-outline-success m-2" {{/if}} {{#if isDanger}} class="btn btn-outline-danger m-2" {{/if}}>
+        {{text}}
+      </button>
+      {{!--
+    </div> --}}
+    {{/each}}
+
+    {{/with}}
+
+    {{#each itemList}}
+    <hr>
+    <table class="table">
+      <tbody>
+        <tr>
+
+          <td>
+            {{number}}
+            <p>{{status}}</p>
+          </td>
+
+          <td>
+            {{#with amount}}
+            <h5>{{title}}</h5>
+            <br>
+            {{value}}
+            {{/with}}
+          </td>
+          {{!-- <div class="col-8"> --}}
+            <td>
+
+              {{#each images}}
+              <img src='{{this}}' class="m-1">
+              {{/each}}
+
+            </td>
+            {{!--
+          </div> --}}
+
+          <td>
+
+            <br>
+            {{#with button}}
+            <button href="{{link}}" {{#if isPrimary}} class="btn btn-primary m-2" {{/if}}>
+              {{text}}
+            </button>
+            {{/with}}
+            <br>
+
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    {{/each}}
+
+    {{/with}} {{!-- // ====== close purchase ============== --}}
+    <hr>
+
+    {{#with userInfo}}
+
+    <h4>{{title}}</h4>
+
+
+    {{#with profileData}}
+    <div class="card m-4 ">
+      <h4 class="m-2">{{title}}</h4>
+
+      {{#with fullName}}
+
+      <div class="card m-4 row">
+        <div class="card-body m-1">
+          <table class="table">
+            <tbody>
+              <tr>
+
+                <td>
+                  {{#with surname}}
+                  <div>{{title}}</div>
+                  <br>
+                  <h5>{{value}}</h5>
+                  {{/with}}
+                </td>
+
+                <td>
+                  {{#with name}}
+                  <div>{{title}}</div>
+                  <br>
+                  <h5>{{value}}</h5>
+                  {{/with}}
+                </td>
+                {{!-- <div class="col-8"> --}}
+                  <td>
+                    {{#with middleName}}
+                    <div>{{title}}</div>
+                    <br>
+                    <h5>{{value}}</h5>
+                    {{/with}}
+                  </td>
+                  {{!--
+                </div> --}}
+
+                <td>
+
+                  <br>
+                  {{#with button}}
+                  <button href="{{link}}" {{#if isPrimary}} class="btn btn-primary m-2" {{/if}}>
+                    {{text}}
+                  </button>
+                  {{/with}}
+                  <br>
+
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {{/with}} {{!-- // ====== close fullName ============== --}}
+
+      {{#with otherInfo}}
+
+      <div class="card m-4 row">
+        <div class="card-body m-1">
+          <table class="table">
+            <tbody>
+              <tr>
+
+                <td>
+                  {{#with birthday}}
+                  <div>{{title}}</div>
+                  <br>
+                  <h5>{{value}}</h5>
+                  {{/with}}
+                </td>
+
+                <td>
+                  {{#with sex}}
+                  <div>{{title}}</div>
+                  <br>
+                  <h5>{{value}}</h5>
+                  {{/with}}
+                </td>
+                {{!-- <div class="col-8"> --}}
+                  <td>
+                    {{#with language}}
+                    <div>{{title}}</div>
+                    <br>
+                    <h5>{{value}}</h5>
+                    {{/with}}
+                  </td>
+                  {{!--
+                </div> --}}
+
+                <td>
+
+                  <br>
+                  {{#with button}}
+                  <button href="{{link}}" {{#if isPrimary}} class="btn btn-primary m-2" {{/if}}>
+                    {{text}}
+                  </button>
+                  {{/with}}
+                  <br>
+
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {{/with}} {{!-- // ====== close otherInfo ============== --}}
+
+
+      <div class="card m-4 ">
+        <div class="card-body m-1">
+          {{#each ../buttons}}
+
+          {{!-- <table class="table">
+            <tbody>
+              <tr>
+
+                <td>
+
+                  <br> --}}
+                  {{!-- {{#with }} --}}
+                  <button href="{{link}}" {{#if isPrimary}} class="btn btn-primary m-2" {{/if}} {{#if isSecondary}}
+                    class="btn btn-outline-secondary m-2" {{/if}} {{#if isDanger}} class="btn btn-outline-danger m-2"
+                    {{/if}}>
+
+                    {{text}}
+                  </button>
+                  {{!-- {{/with}} --}}
+                  {{!-- <br> --}}
+
+                  {{!--
+                </td>
+
+              </tr>
+            </tbody>
+          </table> --}}
+
+          {{/each}}
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+    {{/with}} {{!-- // ====== close profileData ============== --}}
+
+
+    {{#with contacts}}
+    <div class="card m-4 ">
+      <h4 class="m-2">{{title}}</h4>
+      <br>
+
+      <div class="row">
+        {{#each contactData}}
+        <div class="card col-3 m-4 ">
+          <div class="card-body m-1">
+
+
+            <div>{{title}}</div>
+            <h4>{{value}}</h4>
+            {{#with button}}
+            <button href="{{link}}" {{#if isPrimary}} class="btn btn-primary m-2" {{/if}} {{#if isSecondary}}
+              class="btn btn-outline-secondary m-2" {{/if}} {{#if isDanger}} class="btn btn-outline-danger m-2" {{/if}}>
+
+              {{text}}
+            </button>
+            {{/with}}
+
+
+          </div>
+        </div>
+
+        {{/each}}
+      </div>
+
+
+
+
+
+
+
+
+    </div>
+    {{/with}} {{!-- // ====== close contacts ============== --}}
+
+
+
+    {{/with}} {{!-- // ====== close userInfo ============== --}}
+
+
+
+
+
+
+
+
+
+
+  </main>
+
+</div>
